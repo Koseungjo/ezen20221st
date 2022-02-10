@@ -1,16 +1,16 @@
 package person;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JList;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import java.awt.Font;
+
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JTextField;
+
 
 public class Consumer {
 
@@ -50,6 +50,7 @@ public class Consumer {
 		frame.getContentPane().setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"정육", "식품", "생필품", "야채,과일"}));
 		comboBox.setBounds(12, 26, 103, 35);
 		frame.getContentPane().add(comboBox);
 		
@@ -69,7 +70,7 @@ public class Consumer {
 		
 		JList list_1 = new JList();
 		list_1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"\uC0AC\uACFC", "\uBC30", "\uADE4"};
+			String[] values = new String[] {};
 			public int getSize() {
 				return values.length;
 			}
