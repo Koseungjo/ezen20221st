@@ -16,6 +16,7 @@ public class Login {
 
 	private JFrame frame;
 	MemberDAO dao = new MemberDAO();
+	MemberDAO3 dao2 = new MemberDAO3();
 
 	/**
 	 * Launch the application.
@@ -76,8 +77,8 @@ public class Login {
 		frame.getContentPane().add(pw);
 		
 		
-		Button bt2 = new Button("\uB85C\uADF8\uC778");
-		bt2.setBounds(95, 204, 76, 23);
+		Button bt2 = new Button("\uAD6C\uB9E4\uC790 \uB85C\uADF8\uC778");
+		bt2.setBounds(330, 118, 76, 23);
 		bt2.addActionListener(new ActionListener() {
 
 			@Override
@@ -104,10 +105,40 @@ public class Login {
 			}
 			
 		});
-		frame.getContentPane().add(bt2);
 		
-		Button bt1 = new Button("\uD68C\uC6D0\uAC00\uC785");
-		bt1.setBounds(248, 204, 76, 23);
+		frame.getContentPane().add(bt2);
+		Button bt2_1 = new Button("\uD310\uB9E4\uC790 \uB85C\uADF8\uC778");
+		bt2_1.setBounds(330, 147, 76, 23);
+		bt2_1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				lt.setText("");
+		        if (id.getText().equals("")) {
+		        	lt.setText("ID를 입력하세요.");
+		        } else if (pw.getText().equals("")) {
+		        	lt.setText("Password를 입력하세요.");
+		        } else {
+		           ArrayList<MemberVo2> list = dao2.list2(null, null, null);
+		           if (list.size() == 0) {
+		        	   lt.setText("ID를 잘못 입력하셨습니다.");
+		           } else {
+		        	   MemberVo2 data = (MemberVo2) list.get(0);
+		              String spwd = data.getpwd();
+		              if(pw.getText().equals(spwd)) {
+		            	  lt.setText("로그인 성공.");
+		              }else {
+		            	  lt.setText("Password를 잘못 입력하셨습니다.");
+		              }
+		           }
+		        }
+			}
+			
+		});
+		frame.getContentPane().add(bt2_1);
+		
+		Button bt1 = new Button("구매자 회원가입");
+		bt1.setBounds(95, 203, 91, 23);
 		bt1.addActionListener(new ActionListener() {
 
 			@Override
@@ -122,6 +153,15 @@ public class Login {
 		label.setFont(new Font("Dialog", Font.BOLD, 24));
 		label.setBounds(95, 10, 218, 40);
 		frame.getContentPane().add(label);
+		
+		Button bt1_1 = new Button("\uD310\uB9E4\uC790 \uD68C\uC6D0\uAC00\uC785");
+		bt1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MartMember me = new MartMember();
+			}
+		});
+		bt1_1.setBounds(233, 204, 91, 23);
+		frame.getContentPane().add(bt1_1);
 		
 	}
 }

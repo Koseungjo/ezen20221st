@@ -78,7 +78,7 @@ public class Consumer {
 				return values[index];
 			}
 		});
-		list_1.setBounds(12, 83, 509, 296);
+		list_1.setBounds(12, 83, 160, 94);
 		frame.getContentPane().add(list_1);
 		
 		JButton btnNewButton_1 = new JButton("\uC8FC\uBB38\uD558\uAE30");
